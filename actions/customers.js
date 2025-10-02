@@ -1,6 +1,7 @@
 // Customer API functions for frontend use
 
-const API_BASE_URL = '/api/customer';
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const API_BASE_URL = `${apiUrl}/api/customer`;
 
 export const customerActions = {
   // Get all customers

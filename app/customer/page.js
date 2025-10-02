@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export default function CustomerList() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,7 +21,7 @@ export default function CustomerList() {
   const fetchCustomers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/customer');
+      const response = await fetch(`${apiUrl}/api/customer`);
       const result = await response.json();
       
       if (result.success) {
@@ -51,7 +53,7 @@ export default function CustomerList() {
   const handleAddCustomer = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/customer', {
+      const response = await fetch(`${apiUrl}/api/customer`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +83,7 @@ export default function CustomerList() {
     }
 
     try {
-      const response = await fetch(`/api/customer/${customerId}`, {
+      const response = await fetch(`${apiUrl}/api/customer/${customerId}`, {
         method: 'DELETE',
       });
 

@@ -7,7 +7,7 @@ export default function BoxBasic() {
   return (
     <main className="container mx-auto p-6">
       <Box component="section" className="border border-gray-800 m-5 p-8 text-center rounded-lg">
-        <h1 className="text-4xl text-violet-950 mb-6">Stock Management v1.0</h1>
+        <h1 className="text-4xl text-violet-950 mb-6">Fin-Customer App</h1>
         <div className="flex justify-center">
           <Link href="/customer" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-colors">
             Customer Management

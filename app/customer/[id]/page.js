@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export default function CustomerDetail() {
   const params = useParams();
   const router = useRouter();
@@ -22,7 +24,7 @@ export default function CustomerDetail() {
   const fetchCustomer = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/customer/${params.id}`);
+      const response = await fetch(`${apiUrl}/api/customer/${params.id}`);
       const result = await response.json();
       
       if (result.success) {
@@ -62,7 +64,7 @@ export default function CustomerDetail() {
   const handleUpdateCustomer = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/customer/${params.id}`, {
+      const response = await fetch(`${apiUrl}/api/customer/${params.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +93,7 @@ export default function CustomerDetail() {
     }
 
     try {
-      const response = await fetch(`/api/customer/${params.id}`, {
+      const response = await fetch(`${apiUrl}/api/customer/${params.id}`, {
         method: 'DELETE',
       });
 

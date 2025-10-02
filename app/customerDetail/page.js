@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export default function CustomerDetail() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,7 +21,7 @@ export default function CustomerDetail() {
   const fetchCustomers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/customer');
+      const response = await fetch(`${apiUrl}/api/customer`);
       const result = await response.json();
       
       if (result.success) {
@@ -51,7 +53,7 @@ export default function CustomerDetail() {
   const handleAddCustomer = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/customer', {
+      const response = await fetch(`${apiUrl}/api/customer`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +80,7 @@ export default function CustomerDetail() {
   const handleUpdateCustomer = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/customer/${editingCustomer._id}`, {
+      const response = await fetch(`${apiUrl}/api/customer/${editingCustomer._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +114,7 @@ export default function CustomerDetail() {
     }
 
     try {
-      const response = await fetch(`/api/customer/${customerId}`, {
+      const response = await fetch(`${apiUrl}/api/customer/${customerId}`, {
         method: 'DELETE',
       });
 
