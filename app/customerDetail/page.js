@@ -21,7 +21,7 @@ export default function CustomerDetail() {
   const fetchCustomers = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${apiUrl}/api/customer`);
+      const response = await fetch(`${apiUrl}/customer`);
       const result = await response.json();
       
       if (result.success) {
@@ -53,7 +53,7 @@ export default function CustomerDetail() {
   const handleAddCustomer = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiUrl}/api/customer`, {
+      const response = await fetch(`${apiUrl}/customer`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ export default function CustomerDetail() {
   const handleUpdateCustomer = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiUrl}/api/customer/${editingCustomer._id}`, {
+      const response = await fetch(`${apiUrl}/customer/${editingCustomer._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ export default function CustomerDetail() {
     }
 
     try {
-      const response = await fetch(`${apiUrl}/api/customer/${customerId}`, {
+      const response = await fetch(`${apiUrl}/customer/${customerId}`, {
         method: 'DELETE',
       });
 
